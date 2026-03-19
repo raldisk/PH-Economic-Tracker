@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+ENV/
+
+# pip / setup
+pip-wheel-metadata/
+*.whl
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# dbt
+transforms/target/
+transforms/dbt_packages/
+transforms/logs/
+transforms/.user.yml
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Docker
+.dockerignore
+
+# Data files
+data/
+*.duckdb
+*.duckdb.wal
+
+# BSP CSV downloads
+bsp_*.csv
+
+# Logs
+*.log
+logs/
