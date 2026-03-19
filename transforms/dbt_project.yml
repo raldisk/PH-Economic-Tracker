@@ -1,0 +1,22 @@
+name: ph_economic_tracker
+version: "1.0.0"
+config-version: 2
+
+profile: ph_economic_tracker
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  ph_economic_tracker:
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table

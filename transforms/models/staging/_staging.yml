@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_economic_indicators
+    description: "Cleaned and enriched economic indicators. Rows with null value are excluded."
+    columns:
+      - name: series_code
+        tests: [not_null]
+      - name: period_date
+        tests: [not_null]
+      - name: value
+        tests: [not_null]
+      - name: indicator_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["gdp", "cpi", "employment", "other"]
+      - name: country_code
+        tests: [not_null]
+
+  - name: stg_ofw_remittances
+    description: "Cleaned OFW remittance records. Requires at least one non-null value field."
+    columns:
+      - name: source
+        tests: [not_null]
+      - name: period_date
+        tests: [not_null]
+      - name: country_destination
+        tests: [not_null]

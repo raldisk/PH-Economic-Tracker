@@ -1,0 +1,35 @@
+ph_economic_tracker:
+  target: prod
+  outputs:
+    prod:
+      type: postgres
+      host: "{{ env_var('PH_TRACKER_PG_HOST', 'postgres') }}"
+      port: "{{ env_var('PH_TRACKER_PG_PORT', '5432') | int }}"
+      user: "{{ env_var('PH_TRACKER_PG_USER', 'tracker') }}"
+      password: "{{ env_var('PH_TRACKER_PG_PASSWORD', 'tracker') }}"
+      dbname: "{{ env_var('PH_TRACKER_PG_DBNAME', 'ph_economic') }}"
+      schema: staging
+      threads: 4
+      connect_timeout: 10
+
+    dev:
+      type: postgres
+      host: "{{ env_var('PH_TRACKER_PG_HOST', 'localhost') }}"
+      port: "{{ env_var('PH_TRACKER_PG_PORT', '5432') | int }}"
+      user: "{{ env_var('PH_TRACKER_PG_USER', 'tracker') }}"
+      password: "{{ env_var('PH_TRACKER_PG_PASSWORD', 'tracker') }}"
+      dbname: "{{ env_var('PH_TRACKER_PG_DBNAME', 'ph_economic') }}"
+      schema: staging
+      threads: 4
+      connect_timeout: 10
+
+    ci:
+      type: postgres
+      host: localhost
+      port: 5432
+      user: tracker
+      password: tracker
+      dbname: ph_economic
+      schema: staging
+      threads: 2
+      connect_timeout: 10

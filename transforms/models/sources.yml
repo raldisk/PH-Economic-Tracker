@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw ingestion tables loaded by the Python pipeline."
+    schema: raw
+    tables:
+      - name: economic_indicators
+        description: "PSA + World Bank time-series economic indicators."
+        columns:
+          - name: source
+            tests: [not_null]
+          - name: series_code
+            tests: [not_null]
+          - name: period_date
+            tests: [not_null]
+          - name: value
+            description: "Numeric value — may be NULL for missing data points."
+
+      - name: ofw_remittances
+        description: "OFW remittance records from World Bank and BSP."
+        columns:
+          - name: source
+            tests: [not_null]
+          - name: period_date
+            tests: [not_null]
+          - name: country_destination
+            tests: [not_null]

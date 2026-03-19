@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: gdp_trend
+    description: "Annual GDP series with YoY growth rate and per-capita values."
+    columns:
+      - name: period_year
+        tests: [not_null, unique]
+      - name: gdp_usd_bn
+        tests: [not_null]
+
+  - name: cpi_trend
+    description: "Monthly CPI index and inflation rate with MoM change."
+    columns:
+      - name: period_date
+        tests: [not_null, unique]
+      - name: period_year
+        tests: [not_null]
+
+  - name: remittance_trend
+    description: "Annual OFW remittances with YoY growth and 3-year rolling average."
+    columns:
+      - name: period_year
+        tests: [not_null, unique]
+      - name: remittance_usd
+        tests: [not_null]
+
+  - name: economic_dashboard
+    description: "Wide annual table joining GDP, CPI, and OFW remittances. Primary Streamlit source."
+    columns:
+      - name: period_year
+        tests: [not_null, unique]
