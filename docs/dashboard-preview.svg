@@ -1,0 +1,176 @@
+<svg width="100%" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+
+  <rect width="900" height="520" fill="#f8f9fa" rx="10"/>
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="190" height="520" fill="#262730" rx="10"/>
+  <rect x="180" y="0" width="10" height="520" fill="#262730"/>
+
+  <!-- Sidebar: flag placeholder + title -->
+  <rect x="18" y="18" width="36" height="24" rx="3" fill="#0038A8"/>
+  <rect x="18" y="18" width="36" height="8" rx="3" fill="#CE1127"/>
+  <text x="62" y="30" font-size="12" font-weight="700" fill="#ffffff">🇵🇭 PH Economic</text>
+  <text x="62" y="44" font-size="11" fill="#9b9b9b">Tracker</text>
+
+  <!-- Sidebar: caption -->
+  <text x="18" y="68" font-size="9" fill="#6b6b6b">Data: PSA · World Bank · BSP</text>
+  <line x1="18" y1="76" x2="172" y2="76" stroke="#3a3a4a" stroke-width="0.5"/>
+
+  <!-- Sidebar: sliders -->
+  <text x="18" y="96" font-size="10" fill="#9b9b9b">Start year</text>
+  <rect x="18" y="102" width="154" height="6" rx="3" fill="#3a3a4a"/>
+  <rect x="18" y="102" width="80" height="6" rx="3" fill="#534AB7"/>
+  <circle cx="98" cy="105" r="7" fill="#ffffff" stroke="#534AB7" stroke-width="2"/>
+  <text x="155" y="113" font-size="9" fill="#ffffff">2005</text>
+
+  <text x="18" y="130" font-size="10" fill="#9b9b9b">End year</text>
+  <rect x="18" y="136" width="154" height="6" rx="3" fill="#3a3a4a"/>
+  <rect x="18" y="136" width="148" height="6" rx="3" fill="#534AB7"/>
+  <circle cx="166" cy="139" r="7" fill="#ffffff" stroke="#534AB7" stroke-width="2"/>
+  <text x="155" y="147" font-size="9" fill="#ffffff">2024</text>
+
+  <line x1="18" y1="162" x2="172" y2="162" stroke="#3a3a4a" stroke-width="0.5"/>
+
+  <!-- Sidebar: refresh button -->
+  <rect x="18" y="170" width="154" height="28" rx="5" fill="#3a3a4a"/>
+  <text x="95" y="189" text-anchor="middle" font-size="11" fill="#ffffff">🔄 Refresh data</text>
+
+  <text x="18" y="216" font-size="9" fill="#6b6b6b">Showing 2005–2024</text>
+
+  <!-- ── Main area ──────────────────────────────────────────────────── -->
+
+  <!-- Page title -->
+  <text x="210" y="26" font-size="18" font-weight="700" fill="#262730">Philippine Economic Dashboard</text>
+  <text x="210" y="42" font-size="10" fill="#888780">Annual indicators · 2005–2024 · Latest: 2024</text>
+  <line x1="210" y1="50" x2="890" y2="50" stroke="#e0e0e0" stroke-width="0.5"/>
+
+  <!-- ── Metric cards ─────────────────────────────────────────────── -->
+  <!-- Card 1: GDP -->
+  <rect x="210" y="58" width="130" height="60" rx="6" fill="#eef2f7"/>
+  <text x="220" y="74" font-size="9" fill="#888780">GDP (current USD)</text>
+  <text x="220" y="95" font-size="18" font-weight="700" fill="#262730">$437.1B</text>
+  <text x="220" y="111" font-size="10" fill="#1D9E75">+5.6% ↑</text>
+
+  <!-- Card 2: GDP per capita -->
+  <rect x="352" y="58" width="130" height="60" rx="6" fill="#eef2f7"/>
+  <text x="362" y="74" font-size="9" fill="#888780">GDP per capita</text>
+  <text x="362" y="95" font-size="18" font-weight="700" fill="#262730">$3,859</text>
+  <text x="362" y="111" font-size="10" fill="#888780">current USD</text>
+
+  <!-- Card 3: Inflation -->
+  <rect x="494" y="58" width="130" height="60" rx="6" fill="#eef2f7"/>
+  <text x="504" y="74" font-size="9" fill="#888780">Inflation (avg)</text>
+  <text x="504" y="95" font-size="18" font-weight="700" fill="#E24B4A">+5.8%</text>
+  <text x="504" y="111" font-size="10" fill="#E24B4A">↑ above BSP target</text>
+
+  <!-- Card 4: Remittances -->
+  <rect x="636" y="58" width="130" height="60" rx="6" fill="#eef2f7"/>
+  <text x="646" y="74" font-size="9" fill="#888780">OFW Remittances</text>
+  <text x="646" y="95" font-size="18" font-weight="700" fill="#262730">$37.2B</text>
+  <text x="646" y="111" font-size="10" fill="#1D9E75">+2.9% ↑</text>
+
+  <!-- Card 5: Remit/GDP -->
+  <rect x="778" y="58" width="106" height="60" rx="6" fill="#eef2f7"/>
+  <text x="788" y="74" font-size="9" fill="#888780">Remit / GDP</text>
+  <text x="788" y="95" font-size="18" font-weight="700" fill="#262730">8.5%</text>
+  <text x="788" y="111" font-size="10" fill="#888780">of GDP</text>
+
+  <!-- ── Tabs ──────────────────────────────────────────────────────── -->
+  <rect x="210" y="128" width="680" height="28" rx="0" fill="#ffffff"/>
+  <!-- Active tab -->
+  <rect x="210" y="128" width="100" height="28" rx="4" fill="#534AB7"/>
+  <text x="260" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">📈 GDP</text>
+  <!-- Inactive tabs -->
+  <text x="365" y="147" text-anchor="middle" font-size="11" fill="#888780">📊 CPI &amp; Inflation</text>
+  <text x="510" y="147" text-anchor="middle" font-size="11" fill="#888780">💸 OFW Remittances</text>
+  <text x="660" y="147" text-anchor="middle" font-size="11" fill="#888780">🗂 Overview</text>
+  <line x1="210" y1="156" x2="890" y2="156" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- ── Chart area (GDP tab) ───────────────────────────────────────── -->
+  <text x="212" y="176" font-size="11" font-weight="700" fill="#262730">GDP at current prices (USD billions)</text>
+
+  <!-- Y axis labels -->
+  <text x="216" y="316" font-size="9" fill="#888780">0</text>
+  <text x="208" y="283" font-size="9" fill="#888780">100</text>
+  <text x="208" y="250" font-size="9" fill="#888780">200</text>
+  <text x="208" y="218" font-size="9" fill="#888780">300</text>
+  <text x="208" y="186" font-size="9" fill="#888780">400</text>
+
+  <!-- Grid lines -->
+  <line x1="232" y1="315" x2="560" y2="315" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="232" y1="282" x2="560" y2="282" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="232" y1="249" x2="560" y2="249" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="232" y1="216" x2="560" y2="216" stroke="#e8e8e8" stroke-width="0.5"/>
+  <line x1="232" y1="183" x2="560" y2="183" stroke="#e8e8e8" stroke-width="0.5"/>
+
+  <!-- GDP Bars (2005–2024, 20 bars) -->
+  <!-- Bar heights proportional to ~100B-437B range, scaled to 132px max height -->
+  <!-- Each bar: width=14, gap=2, starting x=233 -->
+  <rect x="234" y="291" width="14" height="24" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="250" y="286" width="14" height="29" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="266" y="280" width="14" height="35" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="282" y="277" width="14" height="38" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="298" y="270" width="14" height="45" rx="2" fill="#185FA5" opacity="0.85"/>
+  <!-- 2009 GFC dip -->
+  <rect x="314" y="273" width="14" height="42" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="330" y="266" width="14" height="49" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="346" y="258" width="14" height="57" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="362" y="249" width="14" height="66" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="378" y="240" width="14" height="75" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="394" y="229" width="14" height="86" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="410" y="219" width="14" height="96" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="426" y="209" width="14" height="106" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="442" y="199" width="14" height="116" rx="2" fill="#185FA5" opacity="0.85"/>
+  <!-- 2020 COVID drop -->
+  <rect x="458" y="218" width="14" height="97" rx="2" fill="#378ADD" opacity="0.85"/>
+  <rect x="474" y="205" width="14" height="110" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="490" y="197" width="14" height="118" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="506" y="191" width="14" height="124" rx="2" fill="#185FA5" opacity="0.85"/>
+  <rect x="522" y="185" width="14" height="130" rx="2" fill="#185FA5" opacity="0.85"/>
+  <!-- 2024 latest -->
+  <rect x="538" y="183" width="14" height="132" rx="2" fill="#042C53"/>
+
+  <!-- X axis labels (selected years) -->
+  <text x="241" y="327" font-size="8" fill="#888780">2005</text>
+  <text x="369" y="327" font-size="8" fill="#888780">2013</text>
+  <text x="465" y="327" fill="#E24B4A" font-size="8" font-weight="700">2020</text>
+  <text x="544" y="327" font-size="8" fill="#888780">2024</text>
+
+  <!-- COVID annotation -->
+  <line x1="465" y1="216" x2="465" y2="198" stroke="#E24B4A" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="438" y="196" font-size="8" fill="#E24B4A">COVID-19</text>
+
+  <!-- GDP Growth line chart (right side) -->
+  <text x="580" y="176" font-size="11" font-weight="700" fill="#262730">GDP growth rate (%)</text>
+
+  <!-- Growth chart area -->
+  <line x1="580" y1="315" x2="885" y2="315" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="580" y1="249" x2="885" y2="249" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="580" y1="183" x2="885" y2="183" stroke="#e0e0e0" stroke-width="0.5"/>
+  <!-- 0% line -->
+  <line x1="580" y1="249" x2="885" y2="249" stroke="#888780" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+  <text x="576" y="317" font-size="8" text-anchor="end" fill="#888780">-10%</text>
+  <text x="576" y="251" font-size="8" text-anchor="end" fill="#888780">0%</text>
+  <text x="576" y="185" font-size="8" text-anchor="end" fill="#888780">+10%</text>
+
+  <!-- Growth line polyline (approximate historical PH GDP growth) -->
+  <polyline points="
+    590,221 606,218 622,213 638,217 654,214
+    670,220 686,215 702,210 718,205 734,210
+    750,206 766,202 782,200 798,205
+    814,230 830,215 846,213 862,210 878,211" 
+    fill="none" stroke="#1D9E75" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Dots -->
+  <circle cx="814" cy="230" r="4" fill="#E24B4A"/>
+  <circle cx="878" cy="211" r="4" fill="#1D9E75"/>
+
+  <!-- Download button -->
+  <rect x="210" y="338" width="680" height="1" fill="#e0e0e0"/>
+  <rect x="750" y="346" width="140" height="24" rx="4" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+  <text x="820" y="363" text-anchor="middle" font-size="10" fill="#534AB7">📥 Download GDP CSV</text>
+
+  <!-- Bottom credit -->
+  <text x="210" y="510" font-size="9" fill="#b4b2a9">Data: PSA OpenSTAT · World Bank WDI · BSP  |  Built with Streamlit + dbt + PostgreSQL</text>
+
+</svg>
