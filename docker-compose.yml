@@ -1,0 +1,84 @@
+services:
+
+  # ── PostgreSQL 16 — primary warehouse ─────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER:     ${PH_TRACKER_PG_USER:-tracker}
+      POSTGRES_PASSWORD: ${PH_TRACKER_PG_PASSWORD:-tracker}
+      POSTGRES_DB:       ${PH_TRACKER_PG_DBNAME:-ph_economic}
+    ports:
+      - "${PG_PORT:-5432}:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PH_TRACKER_PG_USER:-tracker} -d ${PH_TRACKER_PG_DBNAME:-ph_economic}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  # ── Pipeline app — ingest + dbt transforms ────────────────────────────────
+  app:
+    build:
+      context: .
+      target: runtime
+    image: ph-economic-tracker:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PH_TRACKER_POSTGRES_DSN:    postgresql://${PH_TRACKER_PG_USER:-tracker}:${PH_TRACKER_PG_PASSWORD:-tracker}@postgres:5432/${PH_TRACKER_PG_DBNAME:-ph_economic}
+      PH_TRACKER_PG_HOST:         postgres
+      PH_TRACKER_PG_PORT:         5432
+      PH_TRACKER_PG_USER:         ${PH_TRACKER_PG_USER:-tracker}
+      PH_TRACKER_PG_PASSWORD:     ${PH_TRACKER_PG_PASSWORD:-tracker}
+      PH_TRACKER_PG_DBNAME:       ${PH_TRACKER_PG_DBNAME:-ph_economic}
+      PH_TRACKER_START_YEAR:      ${PH_TRACKER_START_YEAR:-2000}
+    volumes:
+      - ./data:/app/data
+    command: ingest
+    # Set restart: no so the container exits cleanly after ingest completes
+    restart: "no"
+
+  # ── Streamlit dashboard — live local UI ───────────────────────────────────
+  streamlit:
+    build:
+      context: .
+      target: runtime
+    image: ph-economic-tracker:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PH_TRACKER_POSTGRES_DSN: postgresql://${PH_TRACKER_PG_USER:-tracker}:${PH_TRACKER_PG_PASSWORD:-tracker}@postgres:5432/${PH_TRACKER_PG_DBNAME:-ph_economic}
+    ports:
+      - "${STREAMLIT_PORT:-8501}:8501"
+    command: streamlit
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8501/_stcore/health || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  # ── Adminer — lightweight DB browser (localhost:8080) ─────────────────────
+  # Useful for exploring raw + staging + mart tables directly.
+  # Connection: server=postgres, user/pass/db from .env defaults.
+  adminer:
+    image: adminer:4-standalone
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "${ADMINER_PORT:-8080}:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DESIGN:         pepa-linha-dark
+
+volumes:
+  pg_data:
+    driver: local
