@@ -282,16 +282,6 @@ open htmlcov/index.html
 
 ---
 
-## What I'd Improve With More Time
-
-- **Monthly GDP from PSA** — wire the quarterly PSA PXWeb GDP tables directly; currently using World Bank annual data as primary.
-- **Scheduled ingestion** — add a GitHub Actions cron workflow or a simple APScheduler in the pipeline service to auto-refresh weekly.
-- **Forecast layer** — a simple ARIMA or Prophet model on the remittance series would demonstrate ML integration on top of the warehouse.
-- **dbt incremental models** — switch from full-refresh to incremental with `unique_key` as data volume grows.
-- **Alert layer** — Telegram notification when a key indicator crosses a threshold (e.g. inflation > 6%).
-
----
-
 ## License
 
 MIT
