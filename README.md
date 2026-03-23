@@ -12,6 +12,9 @@ Ingests GDP, CPI, employment, and OFW remittance data from the PSA OpenSTAT API 
 > **Full setup instructions → [USAGE.md](USAGE.md)**
 > Local Python setup and Docker setup are documented separately with step-by-step commands.
 
+> **Companion analysis repo → [ph-ofw-analysis](https://github.com/raldisk/ph-ofw-analysis)**
+> Jupyter notebook with EDA, STL decomposition, correlation analysis, and a 3-year SARIMAX remittance forecast. Connects directly to this pipeline's PostgreSQL marts when the Docker stack is running.
+
 
 ---
 
