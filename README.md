@@ -18,6 +18,14 @@ Ingests GDP, CPI, employment, and OFW remittance data from the PSA OpenSTAT API 
 
 ---
 
+## Preview
+
+![Warehouse Data Snapshot](docs/preview.png)
+
+> Four mart tables visualized: GDP trend + growth rate · OFW remittances + % of GDP · CPI inflation vs BSP target band · GDP per capita 2000–2024. Generated from `marts.economic_dashboard` and `marts.cpi_trend`.
+
+---
+
 ## Architecture
 
 ![Pipeline Architecture](docs/architecture.svg)
@@ -182,20 +190,48 @@ ph-tracker reset --confirm            # DROP raw schema (destructive)
 
 ---
 
-## Data Sources
+## Data Sources & Citations
 
-| Source | Series | Frequency | API |
-|---|---|---|---|
-| PSA OpenSTAT | CPI All Items (2018=100) | Monthly | PXWeb REST |
-| PSA OpenSTAT | CPI YoY inflation rate | Monthly | PXWeb REST |
-| World Bank WDI | GDP at current prices | Annual | Indicators REST |
-| World Bank WDI | GDP growth rate | Annual | Indicators REST |
-| World Bank WDI | GDP per capita | Annual | Indicators REST |
-| World Bank WDI | CPI inflation | Annual | Indicators REST |
-| World Bank WDI | Unemployment rate | Annual | Indicators REST |
-| World Bank WDI | OFW remittances (USD) | Annual | Indicators REST |
-| World Bank WDI | Remittances % of GDP | Annual | Indicators REST |
-| BSP | OFW remittances monthly | Monthly | CSV download (optional) |
+All data used in this project is sourced from official Philippine government agencies and international institutions. No third-party or proprietary data is required.
+
+| # | Series | Agency | Frequency | Access Method | URL |
+|---|---|---|---|---|---|
+| 1 | CPI All Items (2018=100) | Philippine Statistics Authority | Monthly | PXWeb REST API | [openstat.psa.gov.ph](https://openstat.psa.gov.ph/) |
+| 2 | CPI YoY inflation rate | Philippine Statistics Authority | Monthly | PXWeb REST API | [openstat.psa.gov.ph](https://openstat.psa.gov.ph/) |
+| 3 | GDP at current USD prices | World Bank WDI | Annual | Indicators REST API | [api.worldbank.org/v2/](https://api.worldbank.org/v2/) |
+| 4 | GDP annual growth rate | World Bank WDI | Annual | Indicators REST API | [api.worldbank.org/v2/](https://api.worldbank.org/v2/) |
+| 5 | GDP per capita (USD) | World Bank WDI | Annual | Indicators REST API | [api.worldbank.org/v2/](https://api.worldbank.org/v2/) |
+| 6 | OFW remittances (USD + % of GDP) | World Bank WDI | Annual | Indicators REST API | [api.worldbank.org/v2/](https://api.worldbank.org/v2/) |
+| 7 | Unemployment rate | World Bank WDI | Annual | Indicators REST API | [api.worldbank.org/v2/](https://api.worldbank.org/v2/) |
+| 8 | OFW remittances monthly (optional) | Bangko Sentral ng Pilipinas | Monthly | CSV download / scrape | [bsp.gov.ph/statistics](https://www.bsp.gov.ph/sitepages/statistics/exchangerate.aspx) |
+
+### Full citation details
+
+**Philippine Statistics Authority (PSA) — OpenSTAT**
+> Philippine Statistics Authority. *OpenSTAT PXWeb API — Consumer Price Index and related series.*
+> Retrieved from `https://openstat.psa.gov.ph/`
+> Base year: 2018 = 100. Coverage: January 2000 – present. Updated monthly.
+
+**World Bank — World Development Indicators (WDI)**
+> World Bank. *World Development Indicators — GDP, remittances, employment series for the Philippines (PHL).*
+> Retrieved from `https://api.worldbank.org/v2/country/PHL/indicator/`
+> Indicator codes used: `NY.GDP.MKTP.CD`, `NY.GDP.MKTP.KD.ZG`, `NY.GDP.PCAP.CD`,
+> `FP.CPI.TOTL.ZG`, `SL.UEM.TOTL.ZS`, `BX.TRF.PWKR.CD.DT`, `BX.TRF.PWKR.DT.GD.ZS`
+> License: CC BY 4.0. No API key required.
+
+**Bangko Sentral ng Pilipinas (BSP) — OFW Remittances**
+> Bangko Sentral ng Pilipinas. *Overseas Filipinos' Remittances — monthly data.*
+> Retrieved from `https://www.bsp.gov.ph/`
+> Note: BSP monthly OFW data is an optional enrichment layer. The core pipeline uses World Bank annual series.
+> Accessed via: static HTML tables and downloadable XLSX files.
+
+### Data freshness
+
+| Source | Update cadence | Pipeline refresh |
+|---|---|---|
+| PSA OpenSTAT CPI | ~3 weeks after reference month | Monthly (GitHub Actions cron) |
+| World Bank WDI | Annual (April–May release) | Annual |
+| BSP remittances | ~6 weeks after reference month | Monthly (optional) |
 
 ---
 
